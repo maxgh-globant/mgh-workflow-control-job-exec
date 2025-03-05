@@ -30,7 +30,7 @@ jobs:
               run: echo "Deploying and uploading...TEST..."
             - name: Set result output
               id: set-result
-              run: echo "step-result=success" >> $GITHUB_OUTPUT
+              run: echo "step-result=success" >> "$GITHUB_OUTPUT"
     # triage:
     #     runs-on: ubuntu-latest
     #     steps:
