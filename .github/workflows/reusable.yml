@@ -7,8 +7,17 @@ on:
           required: false
           default: dist
           type: string
+      outputs:
+        result:
+          description: Result of the deployment
+          value: ${{ jobs.deploy.outputs.outcome}}
+      # secrets:
+      #   some-secret:
+      #     required: false
 jobs:
     deploy_TEST:
+        outputs:
+          outcome: ${{ steps.set-result.outputs.step-result }}
         runs-on: ubuntu-latest
         steps:
             - name: Get Code
@@ -19,3 +28,12 @@ jobs:
               run: ls
             - name: Output information
               run: echo "Deploying and uploading...TEST..."
+            - name: Set result output
+              id: set-result
+              run: echo "step-result=success" >> $GITHUB_OUTPUT
+    # triage:
+    #     runs-on: ubuntu-latest
+    #     steps:
+    #     - uses: actions/labeler@v4
+    #       with:
+    #         repo-token: ${{ secrets.some-secret }}
