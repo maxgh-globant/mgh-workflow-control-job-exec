@@ -18,4 +18,4 @@ jobs:
             - name: List files
               run: ls
             - name: Output information
-              run: echo "Deploying and uploading...TEST"
+              run: echo "Deploying and uploading...TEST..."
